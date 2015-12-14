@@ -14,7 +14,8 @@ using std::ifstream;
 using std::string;
 
 namespace FileCollectionUtils {
-	void outputProperties (vector<File*>& files);
+	void outputProperties (const vector<File*>& files);
+	void outputPropertiesRec (vector<File*>& files);
 	vector<File*> filterFiles (vector<File*> files, std::string extension);
 	void filterFilesRec (vector<File*>& sourceVector, vector<File*>& destVector, std::string extension);
 }
@@ -106,6 +107,10 @@ int FileCollection::findFile(std::string name, std::string extension) const {
 	return NOT_FOUND;
 }
 
+void FileCollection::printAllFiles( ) const {
+	FileCollectionUtils::outputProperties (fileList);
+}
+
 void FileCollection::readFromFile( ) {
 	ifstream inputFile ("file.txt");
 	if(inputFile.is_open()) {
@@ -135,14 +140,18 @@ void FileCollection::readFromFile( ) {
 }
 
 namespace FileCollectionUtils {
-	void outputProperties (vector<File*>& files) {
+	void outputProperties (const vector<File*>& files) {
+		vector<File*> tempFiles;
+		outputPropertiesRec (tempFiles);
+	}
+
+	void outputPropertiesRec(vector<File*>& files) {
 		if (files.size ( ) != 0) {
 			File* lastElement = files.back ( );
 			files.pop_back ( );
 			outputProperties (files);
-			files.push_back (lastElement);
-			cout << lastElement->getName ( ) << "\n";
 			cout << lastElement->getExtension ( ) << "\n";
+			cout << lastElement->getName ( ) << "\n";
 			cout << lastElement->getSize ( ) << "\n";
 		}
 	}
