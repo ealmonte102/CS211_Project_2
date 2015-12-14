@@ -106,7 +106,7 @@ void FileCollection::createTextFile( ) {
 	cout << "***********************\n";
 	string fileName;
 	cout << "Please enter the file's name: ";
-	getline (cin, fileName, ' ');
+	getline (cin, fileName);
 	fileList.push_back (new TextFile (fileName));
 }
 
