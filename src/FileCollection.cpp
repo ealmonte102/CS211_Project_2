@@ -13,6 +13,12 @@ using std::cin;
 using std::ifstream;
 using std::string;
 
+namespace FileCollectionUtils {
+	void outputProperties (vector<File*>& files);
+	vector<File*> filterFiles (vector<File*> files, std::string extension);
+	void filterFilesRec (vector<File*>& sourceVector, vector<File*>& destVector, std::string extension);
+}
+
 FileCollection::FileCollection( ) {}
 
 void FileCollection::mainMenu( ) {
@@ -126,4 +132,35 @@ void FileCollection::readFromFile( ) {
 	} else {
 		cout << "Could not find file.txt\n";
 	}
+}
+
+namespace FileCollectionUtils {
+	void outputProperties (vector<File*>& files) {
+		if (files.size ( ) != 0) {
+			File* lastElement = files.back ( );
+			files.pop_back ( );
+			outputProperties (files);
+			files.push_back (lastElement);
+			cout << lastElement->getName ( ) << "\n";
+			cout << lastElement->getExtension ( ) << "\n";
+			cout << lastElement->getSize ( ) << "\n";
+		}
+	}
+
+	vector<File*> filterFiles (vector<File*> files, std::string extension) {
+		vector<File*> filesToReturn;
+		filterFilesRec (files, filesToReturn, extension);
+		return filesToReturn;
+	}
+
+	void filterFilesRec (vector<File*>& sourceVector, vector<File*>& destVector, std::string extension) {
+		if (sourceVector.size ( ) == 0) { return; }
+		File* fileAtEnd = sourceVector.back ( );
+		sourceVector.pop_back ( );
+		filterFilesRec (sourceVector, destVector, extension);
+		if (fileAtEnd->getExtension ( ) == extension) {
+			destVector.push_back (fileAtEnd);
+		}
+	}
+
 }
