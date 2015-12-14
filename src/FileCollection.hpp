@@ -8,9 +8,20 @@
 class FileCollection {
 public:
 	FileCollection ( );
-
+	void mainMenu ( ) const;
 private:
-	std::vector<File*
+	enum findFlag {
+		NOT_FOUND = -1
+	};
+	void createImageFile ( );
+	void createTextFile ( );
+	void deleteFile (std::string name, std::string extension);
+	int findFile (std::string name, std::string extension) const;
+	void printAllFiles ( ) const;
+	void printFiles (std::string extension) const;
+	void readFromFile ( ) const;
+	
+	std::vector<File*> fileList;
 };
 
 #endif //FILECOLLECTION_HPP
