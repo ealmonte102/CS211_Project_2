@@ -19,7 +19,7 @@ private:
 	int findFile (std::string name, std::string extension) const;
 	void printAllFiles ( ) const;
 	void printFiles (std::string extension) const;
-	void readFromFile ( ) const;
+	void readFromFile ( );
 	
 	std::vector<File*> fileList;
 };

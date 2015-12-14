@@ -2,13 +2,15 @@
 // Created by Evan Almonte
 //
 #include "FileCollection.hpp"
-#include <iostream>
-#include <string>
 #include "ImageFile.hpp"
 #include "TextFile.hpp"
+#include <fstream>
+#include <iostream>
+#include <string>
 
 using std::cout;
 using std::cin;
+using std::ifstream;
 using std::string;
 
 FileCollection::FileCollection( ) {}
@@ -96,4 +98,28 @@ int FileCollection::findFile(std::string name, std::string extension) const {
 		}
 	}
 	return NOT_FOUND;
+}
+
+void FileCollection::readFromFile( ) {
+	ifstream inputFile ("file.txt");
+	if(inputFile.is_open()) {
+		string inputLine;
+		while(getline(inputFile, inputLine)) {
+			if(inputLine == "txt") {
+				string fileName;
+				int fileSize;
+				inputFile >> fileName >> fileSize;
+				fileList.push_back (new TextFile (fileName, SafeArray<int> (fileSize)));
+			} else if (inputLine == "gif") {
+				string fileName;
+				int height, width, colorDepth;
+				inputFile >> fileName >> height;
+				inputFile.get ( );
+				inputFile >> width >> colorDepth;
+				fileList.push_back (new ImageFile (fileName, height, width, colorDepth));
+			}
+		}
+	} else {
+		cout << "Could not find file.txt\n";
+	}
 }
