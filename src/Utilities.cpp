@@ -10,7 +10,7 @@ using std::cin;
 using std::cout;
 using std::string;
 
-namespace Project2_Utilites {
+namespace Project2_Utilities {
 	void clearScreen ( ) {
 #ifdef _WIN32
 		std::system ("CLS");

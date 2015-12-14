@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 
+using Project2_Utilities::upperConvert;
 using std::cout;
 using std::cin;
 using std::ifstream;
@@ -24,7 +25,7 @@ namespace FileCollectionUtils {
 FileCollection::FileCollection( ) {}
 
 void FileCollection::mainMenu( ) {
-	Project2_Utilites::clearScreen ( );
+	Project2_Utilities::clearScreen ( );
 	cout << "***********************\n";
 	cout << "       Main Menu\n";
 	cout << "***********************\n";
@@ -81,7 +82,7 @@ void FileCollection::mainMenu( ) {
 }
 
 void FileCollection::createImageFile( ) {
-	Project2_Utilites::clearScreen ( );
+	Project2_Utilities::clearScreen ( );
 	int height, width, colorDepth;
 	cout << "***********************\n";
 	cout << "   Create Image File\n";
@@ -90,16 +91,16 @@ void FileCollection::createImageFile( ) {
 	cout << "Please enter the file's name: ";
 	getline (cin, fileName);
 	cout << "Please enter the height of the image: ";
-	height = Project2_Utilites::getValidInt( );
+	height = Project2_Utilities::getValidInt( );
 	cout << "Please enter the width of the image: ";
-	width = Project2_Utilites::getValidInt ( );
+	width = Project2_Utilities::getValidInt ( );
 	cout << "Please enter the color depth of the image: ";
-	colorDepth = Project2_Utilites::getValidInt ( );
+	colorDepth = Project2_Utilities::getValidInt ( );
 	fileList.push_back (new ImageFile (fileName, height, width, colorDepth));
 }
 
 void FileCollection::createTextFile( ) {
-	Project2_Utilites::clearScreen ( );
+	Project2_Utilities::clearScreen ( );
 	cout << "***********************\n";
 	cout << "    Create Text File\n";
 	cout << "***********************\n";
@@ -110,7 +111,7 @@ void FileCollection::createTextFile( ) {
 }
 
 void FileCollection::deleteFile(std::string name, std::string extension) {
-	Project2_Utilites::clearScreen ( );
+	Project2_Utilities::clearScreen ( );
 	int location = findFile (name, extension);
 	if(location == NOT_FOUND) {
 		cout << "Could not find the file specified.\n";	
@@ -124,8 +125,11 @@ void FileCollection::deleteFile(std::string name, std::string extension) {
 }
 
 int FileCollection::findFile(std::string name, std::string extension) const {
+	name = upperConvert (name);
+	extension = upperConvert (extension);
 	for (int i = 0; i < fileList.size ( ); i++) {
-		if (name == fileList[i]->getName ( ) && extension == fileList[i]->getExtension ( )) {
+		if (name == upperConvert(fileList[i]->getName ( ))
+			&& extension == upperConvert(fileList[i]->getExtension ( ))) {
 			return i;
 		}
 	}
@@ -133,7 +137,7 @@ int FileCollection::findFile(std::string name, std::string extension) const {
 }
 
 void FileCollection::printAllFiles( ) const {
-	Project2_Utilites::clearScreen ( );
+	Project2_Utilities::clearScreen ( );
 	cout << "***********************\n";
 	cout << "       File List\n";
 	cout << "***********************\n";
@@ -141,7 +145,7 @@ void FileCollection::printAllFiles( ) const {
 }
 
 void FileCollection::printFiles(std::string extension) const {
-	Project2_Utilites::clearScreen ( );
+	Project2_Utilities::clearScreen ( );
 	cout << "***********************\n";
 	cout << "      " + extension + " File List    \n";
 	cout << "***********************\n";
@@ -150,7 +154,7 @@ void FileCollection::printFiles(std::string extension) const {
 }
 
 void FileCollection::readFromFile( ) {
-	Project2_Utilites::clearScreen ( );
+	Project2_Utilities::clearScreen ( );
 	cout << "***********************\n";
 	cout << "   Reading From File   \n";
 	cout << "***********************\n";

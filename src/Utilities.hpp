@@ -2,7 +2,7 @@
 #define UTILITIES_HPP
 #include <string>
 
-namespace Project2_Utilites {
+namespace Project2_Utilities {
 	void clearScreen ( );
 
 	//Converts a string to it's lowercase equivalent.
