@@ -141,7 +141,7 @@ void FileCollection::readFromFile( ) {
 
 namespace FileCollectionUtils {
 	void outputProperties (const vector<File*>& files) {
-		vector<File*> tempFiles;
+		vector<File*> tempFiles(files);
 		outputPropertiesRec (tempFiles);
 	}
 
@@ -157,7 +157,7 @@ namespace FileCollectionUtils {
 	}
 
 	vector<File*> filterFiles (const vector<File*>& files, std::string extension) {
-		vector<File*> tempFiles, filesToReturn;
+		vector<File*> tempFiles(files), filesToReturn;
 		filterFilesRec (tempFiles, filesToReturn, extension);
 		return filesToReturn;
 	}
