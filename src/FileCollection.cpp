@@ -16,7 +16,7 @@ using std::string;
 namespace FileCollectionUtils {
 	void outputProperties (const vector<File*>& files);
 	void outputPropertiesRec (vector<File*>& files);
-	vector<File*> filterFiles (vector<File*> files, std::string extension);
+	vector<File*> filterFiles (const vector<File*>& files, std::string extension);
 	void filterFilesRec (vector<File*>& sourceVector, vector<File*>& destVector, std::string extension);
 }
 
@@ -156,9 +156,9 @@ namespace FileCollectionUtils {
 		}
 	}
 
-	vector<File*> filterFiles (vector<File*> files, std::string extension) {
-		vector<File*> filesToReturn;
-		filterFilesRec (files, filesToReturn, extension);
+	vector<File*> filterFiles (const vector<File*>& files, std::string extension) {
+		vector<File*> tempFiles, filesToReturn;
+		filterFilesRec (tempFiles, filesToReturn, extension);
 		return filesToReturn;
 	}
 
