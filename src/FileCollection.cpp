@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include "ImageFile.hpp"
+#include "TextFile.hpp"
 
 using std::cout;
 using std::cin;
@@ -79,4 +80,11 @@ void FileCollection::createImageFile( ) {
 	cin >> colorDepth;
 	cin.ignore ( );
 	fileList.push_back (new ImageFile (fileName, height, width, colorDepth));
+}
+
+void FileCollection::createTextFile( ) {
+	string fileName;
+	cout << "Please enter the file's name: ";
+	getline (cin, fileName, ' ');
+	fileList.push_back (new TextFile (fileName));
 }
