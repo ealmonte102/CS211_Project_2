@@ -56,7 +56,7 @@ void FileCollection::mainMenu( ) {
 			deleteFile (fileName, fileType);
 
 		}	break;
-		case 8:
+		case 8:	
 			cout << "Program will now quit.\n";
 			return;
 		default:
@@ -109,14 +109,18 @@ void FileCollection::readFromFile( ) {
 				string fileName;
 				int fileSize;
 				inputFile >> fileName >> fileSize;
+				inputFile.ignore ( );
 				fileList.push_back (new TextFile (fileName, SafeArray<int> (fileSize)));
 			} else if (inputLine == "gif") {
 				string fileName;
 				int height, width, colorDepth;
 				inputFile >> fileName >> height;
 				inputFile.get ( );
+				inputFile.get ( );
+				inputFile.get ( );
 				inputFile >> width >> colorDepth;
 				fileList.push_back (new ImageFile (fileName, height, width, colorDepth));
+				inputFile.ignore ( );
 			}
 		}
 	} else {
