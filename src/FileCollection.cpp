@@ -168,6 +168,11 @@ namespace FileCollectionUtils {
 			outputProperties (files);
 			cout << lastElement->getExtension ( ) << "\n";
 			cout << lastElement->getName ( ) << "\n";
+			if(lastElement->getExtension() == "gif") {
+				ImageFile* anImageFile = dynamic_cast<ImageFile*>(lastElement);
+				cout << anImageFile->getDimensionHeight ( ) << " x " <<
+					anImageFile->getDimensionWidth ( ) << "\n";
+			}
 			cout << lastElement->getSize ( ) << " bytes\n\n";
 		}
 	}
