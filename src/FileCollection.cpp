@@ -154,6 +154,7 @@ void FileCollection::readFromFile( ) {
 	cout << "***********************\n";
 	cout << "   Reading From File   \n";
 	cout << "***********************\n";
+	int filesRead = 0;
 	ifstream inputFile ("file.txt");
 	if(inputFile.is_open()) {
 		string inputLine;
@@ -164,6 +165,7 @@ void FileCollection::readFromFile( ) {
 				inputFile >> fileName >> fileSize;
 				inputFile.ignore ( );
 				fileList.push_back (new TextFile (fileName, SafeArray<int> (fileSize)));
+				filesRead++;
 			} else if (inputLine == "gif") {
 				string fileName;
 				int height, width, colorDepth;
@@ -174,11 +176,14 @@ void FileCollection::readFromFile( ) {
 				inputFile >> width >> colorDepth;
 				fileList.push_back (new ImageFile (fileName, height, width, colorDepth));
 				inputFile.ignore ( );
+				filesRead++;
 			}
 		}
 	} else {
 		cout << "Could not find file.txt\n";
 	}
+	cout << filesRead << " file" << (filesRead != 1 ? "s" : "");
+	cout << " read\n";
 }
 
 void FileCollection::writeToFile( ) const {
