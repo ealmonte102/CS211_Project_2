@@ -25,7 +25,9 @@ FileCollection::FileCollection( ) {}
 
 void FileCollection::mainMenu( ) {
 	Project2_Utilites::clearScreen ( );
-	cout << "Main Menu\n";
+	cout << "***********************\n";
+	cout << "       Main Menu\n";
+	cout << "***********************\n";
 	cout << "1) Read from file\n";
 	cout << "2) Create an Image file\n";
 	cout << "3) Create a Text file\n";
@@ -80,6 +82,9 @@ void FileCollection::mainMenu( ) {
 void FileCollection::createImageFile( ) {
 	Project2_Utilites::clearScreen ( );
 	int height, width, colorDepth;
+	cout << "***********************\n";
+	cout << "   Create Image File\n";
+	cout << "***********************\n";
 	string fileName;
 	cout << "Please enter the file's name: ";
 	getline (cin, fileName);
@@ -94,6 +99,9 @@ void FileCollection::createImageFile( ) {
 
 void FileCollection::createTextFile( ) {
 	Project2_Utilites::clearScreen ( );
+	cout << "***********************\n";
+	cout << "    Create Text File\n";
+	cout << "***********************\n";
 	string fileName;
 	cout << "Please enter the file's name: ";
 	getline (cin, fileName, ' ');
@@ -102,6 +110,9 @@ void FileCollection::createTextFile( ) {
 
 void FileCollection::deleteFile(std::string name, std::string extension) {
 	Project2_Utilites::clearScreen ( );
+	cout << "***********************\n";
+	cout << "      Deleting File\n";
+	cout << "***********************\n";
 	int location = findFile (name, extension);
 	if(location == NOT_FOUND) {
 		cout << "Could not find the file specified.\n";	
@@ -122,17 +133,26 @@ int FileCollection::findFile(std::string name, std::string extension) const {
 
 void FileCollection::printAllFiles( ) const {
 	Project2_Utilites::clearScreen ( );
+	cout << "***********************\n";
+	cout << "       File List\n";
+	cout << "***********************\n";
 	FileCollectionUtils::outputProperties (fileList);
 }
 
 void FileCollection::printFiles(std::string extension) const {
 	Project2_Utilites::clearScreen ( );
+	cout << "***********************\n";
+	cout << "      " + extension + " File List    \n";
+	cout << "***********************\n";
 	vector<File*> filesFound = FileCollectionUtils::filterFiles (fileList, extension);
 	FileCollectionUtils::outputProperties (filesFound);
 }
 
 void FileCollection::readFromFile( ) {
 	Project2_Utilites::clearScreen ( );
+	cout << "***********************\n";
+	cout << "   Reading From File   \n";
+	cout << "***********************\n";
 	ifstream inputFile ("file.txt");
 	if(inputFile.is_open()) {
 		string inputLine;
