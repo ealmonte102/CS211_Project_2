@@ -70,6 +70,7 @@ void FileCollection::mainMenu( ) {
 		}	break;
 		case 8:	
 			cout << "Program will now quit.\n";
+			writeToFile ( );
 			return;
 		default:
 			cout << "Invalid option please try again!\n";
@@ -191,10 +192,12 @@ void FileCollection::writeToFile( ) const {
 		if(currentFile->getExtension() == "gif") {
 			ImageFile* anImageFile = dynamic_cast<ImageFile*>(currentFile);
 			outputFile << anImageFile->getDimensionHeight ( ) << " x "
-				<< anImageFile->getDimensionWidth ( ) << "\n";
+				<< anImageFile->getDimensionWidth ( ) << "\n"
+				<< anImageFile->getColorDepth() << "\n";
+		} else {
+			outputFile << currentFile->getSizeInBits ( ) << "\n";
 		}
 
-		outputFile << currentFile->getSize ( ) << "\n";
 		if(i != numOfFiles - 1) {
 			outputFile << "\n";
 		}
