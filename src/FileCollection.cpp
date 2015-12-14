@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "Utilities.hpp"
 
 using std::cout;
 using std::cin;
@@ -79,16 +80,13 @@ void FileCollection::createImageFile( ) {
 	int height, width, colorDepth;
 	string fileName;
 	cout << "Please enter the file's name: ";
-	getline (cin, fileName, ' ');
+	getline (cin, fileName);
 	cout << "Please enter the height of the image: ";
-	cin >> height;
-	cin.ignore ( );
+	height = Project2_Utilites::getValidInt( );
 	cout << "Please enter the width of the image: ";
-	cin >> width;
-	cin.ignore ( );
+	width = Project2_Utilites::getValidInt ( );
 	cout << "Please enter the color depth of the image: ";
-	cin >> colorDepth;
-	cin.ignore ( );
+	colorDepth = Project2_Utilites::getValidInt ( );
 	fileList.push_back (new ImageFile (fileName, height, width, colorDepth));
 }
 
