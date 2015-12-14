@@ -202,6 +202,7 @@ void FileCollection::writeToFile( ) const {
 			outputFile << "\n";
 		}
 	}
+	outputFile.close ( );
 }
 
 namespace FileCollectionUtils {
