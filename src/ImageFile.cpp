@@ -28,3 +28,7 @@ int ImageFile::getDimensionWidth( ) const {
 int ImageFile::getSize( ) const {
 	return static_cast<double>(pixelMatrix.length() * pixelMatrix.width() * colorDepth) / 8;
 }
+
+int ImageFile::getSizeInBits( ) const {
+	return pixelMatrix.length ( ) * pixelMatrix.width ( );
+}

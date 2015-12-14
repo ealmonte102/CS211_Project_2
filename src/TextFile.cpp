@@ -16,6 +16,6 @@ int TextFile::getSize( ) const {
 	return charCount / 8;
 }
 
-int TextFile::getCharCount( ) const {
+int TextFile::getSizeInBits( ) const {
 	return charCount;
 }

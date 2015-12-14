@@ -20,6 +20,8 @@ public:
 	int getDimensionWidth( ) const;
 
 	int getSize( ) const override;
+
+	int getSizeInBits ( ) const override;
 private:
 	SafeMatrix<int> pixelMatrix;
 	int colorDepth;

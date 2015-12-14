@@ -17,6 +17,8 @@ public:
 	std::string getExtension ( ) const;
 	
 	virtual int getSize ( ) const = 0;
+
+	virtual int getSizeInBits ( ) const = 0;
 private:
 	std::string name;
 	std::string extension;

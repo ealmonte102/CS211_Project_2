@@ -15,7 +15,7 @@ public:
 
 	int getSize ( ) const override;
 
-	int getCharCount ( ) const;
+	int getSizeInBits ( ) const override;
 private:
 	SafeArray<int> charList;
 	int charCount;
