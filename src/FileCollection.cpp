@@ -88,3 +88,12 @@ void FileCollection::createTextFile( ) {
 	getline (cin, fileName, ' ');
 	fileList.push_back (new TextFile (fileName));
 }
+
+int FileCollection::findFile(std::string name, std::string extension) const {
+	for (int i = 0; i < fileList.size ( ); i++) {
+		if (name == fileList[i]->getName ( ) && extension == fileList[i]->getExtension ( )) {
+			return i;
+		}
+	}
+	return NOT_FOUND;
+}
