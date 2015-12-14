@@ -8,7 +8,7 @@
 class FileCollection {
 public:
 	FileCollection ( );
-	void mainMenu ( ) const;
+	void mainMenu ( );
 private:
 	enum findFlag {
 		NOT_FOUND = -1
