@@ -120,6 +120,11 @@ void FileCollection::printAllFiles( ) const {
 	FileCollectionUtils::outputProperties (fileList);
 }
 
+void FileCollection::printFiles(std::string extension) const {
+	vector<File*> filesFound = FileCollectionUtils::filterFiles (fileList, extension);
+	FileCollectionUtils::outputProperties (filesFound);
+}
+
 void FileCollection::readFromFile( ) {
 	ifstream inputFile ("file.txt");
 	if(inputFile.is_open()) {
