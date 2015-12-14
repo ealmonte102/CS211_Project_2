@@ -32,14 +32,13 @@ void FileCollection::mainMenu( ) {
 	cout << "1) Read from file\n";
 	cout << "2) Create an Image file\n";
 	cout << "3) Create a Text file\n";
-	cout << "4) Print all files\n";
+	cout << "4) Print All files\n";
 	cout << "5) Print Image files\n";
 	cout << "6) Print Text files\n";
 	cout << "7) Delete a file\n";
 	cout << "8) Terminate\n";
 	int userInput;
-	cin >> userInput;
-	cin.ignore ( );
+	userInput = Project2_Utilities::getValidInt();
 	switch(userInput) {
 		case 1:
 			readFromFile ( );
