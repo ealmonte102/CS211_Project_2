@@ -34,6 +34,7 @@ void FileCollection::mainMenu( ) {
 	cout << "8) Terminate\n";
 	int userInput;
 	cin >> userInput;
+	cin.ignore ( );
 	switch(userInput) {
 		case 1:
 			readFromFile ( );
@@ -57,9 +58,9 @@ void FileCollection::mainMenu( ) {
 		{
 			string fileName, fileType;
 			cout << "Enter the file's name: ";
-			getline(cin, fileName, ' ');
+			getline(cin, fileName);
 			cout << "Enter the file's extension: ";
-			getline (cin, fileName, ' ');
+			getline (cin, fileName);
 			deleteFile (fileName, fileType);
 
 		}	break;
@@ -69,7 +70,7 @@ void FileCollection::mainMenu( ) {
 		default:
 			cout << "Invalid option please try again!\n";
 	}
-	cout << "Press enter to continue . . .";
+	cout << "Press enter to continue . . .\n";
 	cin.get ( );
 	mainMenu ( );
 }
@@ -102,6 +103,7 @@ void FileCollection::deleteFile(std::string name, std::string extension) {
 	int location = findFile (name, extension);
 	if(location == NOT_FOUND) {
 		cout << "Could not find the file specified.\n";	
+		return;
 	}
 	delete fileList[location];
 	fileList.erase (fileList.begin() + location);
@@ -166,7 +168,7 @@ namespace FileCollectionUtils {
 			outputProperties (files);
 			cout << lastElement->getExtension ( ) << "\n";
 			cout << lastElement->getName ( ) << "\n";
-			cout << lastElement->getSize ( ) << "\n";
+			cout << lastElement->getSize ( ) << " bytes\n\n";
 		}
 	}
 
