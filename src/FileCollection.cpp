@@ -111,9 +111,6 @@ void FileCollection::createTextFile( ) {
 
 void FileCollection::deleteFile(std::string name, std::string extension) {
 	Project2_Utilites::clearScreen ( );
-	cout << "***********************\n";
-	cout << "      Deleting File\n";
-	cout << "***********************\n";
 	int location = findFile (name, extension);
 	if(location == NOT_FOUND) {
 		cout << "Could not find the file specified.\n";	
@@ -121,6 +118,9 @@ void FileCollection::deleteFile(std::string name, std::string extension) {
 	}
 	delete fileList[location];
 	fileList.erase (fileList.begin() + location);
+	cout << "***********************\n";
+	cout << " File Has Been Deleted\n";
+	cout << "***********************\n";
 }
 
 int FileCollection::findFile(std::string name, std::string extension) const {
