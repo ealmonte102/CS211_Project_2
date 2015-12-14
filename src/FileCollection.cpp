@@ -98,6 +98,15 @@ void FileCollection::createTextFile( ) {
 	fileList.push_back (new TextFile (fileName));
 }
 
+void FileCollection::deleteFile(std::string name, std::string extension) {
+	int location = findFile (name, extension);
+	if(location == NOT_FOUND) {
+		cout << "Could not find the file specified.\n";	
+	}
+	delete fileList[location];
+	fileList.erase (fileList.begin() + location);
+}
+
 int FileCollection::findFile(std::string name, std::string extension) const {
 	for (int i = 0; i < fileList.size ( ); i++) {
 		if (name == fileList[i]->getName ( ) && extension == fileList[i]->getExtension ( )) {
