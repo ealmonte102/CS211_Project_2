@@ -4,10 +4,10 @@
 #include "FileCollection.hpp"
 #include "ImageFile.hpp"
 #include "TextFile.hpp"
+#include "Utilities.hpp"
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "Utilities.hpp"
 
 using std::cout;
 using std::cin;
@@ -177,6 +177,27 @@ void FileCollection::readFromFile( ) {
 		}
 	} else {
 		cout << "Could not find file.txt\n";
+	}
+}
+
+void FileCollection::writeToFile( ) const {
+	ofstream outputFile ("file.txt");
+	int numOfFiles = fileList.size ( );
+	for (int i = 0; i < numOfFiles; ++i) {
+		File* currentFile = fileList[i];
+		outputFile << currentFile->getExtension ( ) << "\n" 
+			<< currentFile->getName() << "\n";
+		
+		if(currentFile->getExtension() == "gif") {
+			ImageFile* anImageFile = dynamic_cast<ImageFile*>(currentFile);
+			outputFile << anImageFile->getDimensionHeight ( ) << " x "
+				<< anImageFile->getDimensionWidth ( ) << "\n";
+		}
+
+		outputFile << currentFile->getSize ( ) << "\n";
+		if(i != numOfFiles - 1) {
+			outputFile << "\n";
+		}
 	}
 }
 

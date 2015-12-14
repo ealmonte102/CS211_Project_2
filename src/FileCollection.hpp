@@ -20,6 +20,7 @@ private:
 	void printAllFiles ( ) const;
 	void printFiles (std::string extension) const;
 	void readFromFile ( );
+	void writeToFile ( ) const;
 	
 	std::vector<File*> fileList;
 };
