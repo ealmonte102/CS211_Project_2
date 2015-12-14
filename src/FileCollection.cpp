@@ -64,7 +64,7 @@ void FileCollection::mainMenu( ) {
 			cout << "Enter the file's name: ";
 			getline(cin, fileName);
 			cout << "Enter the file's extension: ";
-			getline (cin, fileName);
+			getline (cin, fileType);
 			deleteFile (fileName, fileType);
 
 		}	break;
